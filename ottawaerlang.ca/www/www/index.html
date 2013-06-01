@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Ottawa Erlang</title>
+      <link href="style.css" rel="stylesheet" type="text/css"> 
+      <script>
+         function whatIsErlang()
+         {
+            document.getElementById("what_is_ottawa_erlang").style.visibility = "hidden"; 
+            document.getElementById("get_more_info").style.visibility = "hidden"; 
+            document.getElementById("what_is_erlang").style.visibility = "visible"; 
+
+            document.getElementById("what_is_erlang_menu").className = "menu_selected_cell"; 
+            document.getElementById("what_is_ottawa_erlang_menu").className = "menu_unselected_cell"; 
+            document.getElementById("get_more_info_menu").className = "menu_unselected_cell"; 
+         }
+         function whatIsOttawaErlang()
+         {
+            document.getElementById("what_is_erlang").style.visibility = "hidden"; 
+            document.getElementById("get_more_info").style.visibility = "hidden"; 
+            document.getElementById("what_is_ottawa_erlang").style.visibility = "visible"; 
+
+            document.getElementById("what_is_erlang_menu").className = "menu_unselected_cell"; 
+            document.getElementById("what_is_ottawa_erlang_menu").className = "menu_selected_cell"; 
+            document.getElementById("get_more_info_menu").className = "menu_unselected_cell"; 
+         }
+         function getMoreInfo()
+         {
+            document.getElementById("what_is_erlang").style.visibility = "hidden"; 
+            document.getElementById("what_is_ottawa_erlang").style.visibility = "hidden"; 
+            document.getElementById("get_more_info").style.visibility = "visible"; 
+
+            document.getElementById("what_is_erlang_menu").className = "menu_unselected_cell"; 
+            document.getElementById("what_is_ottawa_erlang_menu").className = "menu_unselected_cell"; 
+            document.getElementById("get_more_info_menu").className = "menu_selected_cell"; 
+         }
+      </script>
+   </head>
+   <body onLoad="whatIsErlang()">
+      <article>
+         <header>
+            <div class="title">
+               <span class="header_code"><<"</span>Ottawa Erlang<span class="header_code">">>.</span>
+            </div>
+            <div class="subtitle">
+               Productive<span class="header_code"> - </span>
+               Scalable<span class="header_code"> - </span>
+               Distributed<span class="header_code"> - </span>
+               Proven<span class="header_code"> ... </span>
+               Fun!
+            </div>
+         </header>
+         <section>
+<div class="table">
+   <div class="row">
+      <div class="major_cell_left">
+         <div class="menu_table">
+            <div class="row">
+               <div class="menu_selected_cell" id="what_is_erlang_menu" onClick="whatIsErlang()">
+                  What is Erlang?
+               </div>
+            </div>
+            <div class="row">
+               <div class="menu_unselected_cell" id="what_is_ottawa_erlang_menu" onClick="whatIsOttawaErlang()">
+                  What is Ottawa Erlang?
+               </div>
+            </div>
+            <div class="row">
+               <div class="menu_unselected_cell" id="get_more_info_menu" onClick="getMoreInfo()">
+                  Get more info
+               </div>
+            </div>
+            <div class="row">
+               <a href="http://www.erlang.org"><img src="img/Erlang_logo.png" alt="Erlang"></a>
+            </div>
+         </div>
+      </div>
+      <div class="major_cell">
+         <div class="content">
+            <div class="content_text" id="what_is_erlang">
+<div>
+                        <a href="http://www.erlang.org">Erlang</a> is one of the best languages/platforms you can choose to implement your next highly scalable and fault tolerant backend system.
+                     </div>
+                     <div>&nbsp;</div>
+                     <div>
+                        It gives you a programming model that is close to how the real world actually works. Concurrent things like web sessions and VoIP calls are modelled naturally as we would imagine them.
+                     </div>
+                     <div>&nbsp;</div>
+                     <div>
+                        There is no need for bolted-on asynchronous processing and event multiplexing frameworks: everything is included in the core language.
+                     </div>
+                     <div>&nbsp;</div>
+                     <div>
+                        The result is a highly productive programming experience that yields sound design decisions and high quality.
+                     </div>
+                     <div>&nbsp;</div>
+                     <div>
+                        But don't simply take our word for it: give it a try and come to one of our meetups to meet other people passionate about Erlang!
+                     </div>
+                     <div>&nbsp;</div>
+                     <div>
+                        <a href="http://www.meetup.com/Ottawa-Erlang">
+                           <img src="img/join.png" alt="Join Us!">
+                        </a>
+                     </div>
+            </div>
+            <div class="content_text" id="what_is_ottawa_erlang">
+<div>
+                        Canada's National Capital area has a strong community of innovative high-tech companies and a solid legacy in telecoms.
+                     </div>
+                     <div>&nbsp;</div>
+                     <div>
+                        The goal of the Ottawa Erlang Meetup Group is to raise awareness and ensure more people can reap the benefits of using Erlang by connecting those who are curious about it with others who've actually gone to production with it.
+                     </div>
+                     <div>&nbsp;</div>
+                     <div>
+                        <a href="http://www.meetup.com/Ottawa-Erlang">
+                           <img src="img/join.png" alt="Join Us!">
+                        </a>
+                     </div>
+            </div>
+            <div class="content_text" id="get_more_info">
+<div>
+                        <ul>
+                           <li>Erlang - <a href="http://www.erlang.org">http://www.erlang.org</a></li>
+                           <li>Learn You Some Erlang for Great Good! - <a href="http://learnyousomeerlang.com">http://learnyousomeerlang.com</a></li>
+                           <li>Erlang Central - <a href="http://erlangcentral.org">http://erlangcentral.org</a></li>
+                           <li>Erlang Factory - <a href="http://www.erlang-factory.com">http://www.erlang-factory.com</a></li>
+                        </ul>
+                     </div>
+                     <div>&nbsp;</div>
+                     <div>
+                        <a href="http://www.meetup.com/Ottawa-Erlang">
+                           <img src="img/join.png" alt="Join Us!">
+                        </a>
+                     </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+         </section>
+         <footer>
+            Powered by Erlang
+         </footer>
+      </article>
+   </body>
+</html>
