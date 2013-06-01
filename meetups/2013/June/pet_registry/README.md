@@ -1,6 +1,8 @@
 Personal Pet Registry: Super Simple ChicagoBoss Example
 =======================================================
 
+*** THIS IS WORK IN PROGRESS :) ***
+
 Introduction
 ------------
 
