@@ -12,3 +12,10 @@ In order to run this example, you should have a working ChicagoBoss
 please edit the file boss.config and change the value of the "path" setting to
 point to your CB folder.
 
+Running the development environment
+-----------------------------------
+
+    ./init-dev.sh
+
+Then open your browser to http://localhost:8001/registry/browse
+
