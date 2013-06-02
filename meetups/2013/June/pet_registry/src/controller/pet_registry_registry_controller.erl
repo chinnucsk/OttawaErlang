@@ -2,10 +2,18 @@
 -compile(export_all).
 
 browse('GET', []) ->
-   {ok, []}.
+   Pets = boss_db:find(pet, []),
+   {ok, [{pets, Pets}]}.
 
-edit('GET', []) ->
+edit('GET', [Id]) ->
    {ok, []}.
 
 add('GET', []) ->
-   {ok, []}.
+   {ok, []};
+
+add('POST', []) ->
+   Name = Req:post_param("Name"),
+   Kind = Req:post_param("Kind"),
+   NewPet = pet:new(id, Name, Kind),
+   {ok, _} = NewPet:save(),
+   {redirect, [{action, "browse"}]}.

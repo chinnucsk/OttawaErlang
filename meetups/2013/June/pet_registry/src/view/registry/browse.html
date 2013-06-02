@@ -1,1 +1,29 @@
-Browse
+<html>
+<head>
+<title>Personal Pet Registry</title>
+</head>
+<body>
+{% block body %}
+<h1>Personal Pet Registry</h1>
+<p>
+<a href="{% url action="add" %}">Add new pet</a>
+</p>
+{% if pets %}
+<table>
+<tr>
+<th>Name</th><th>Kind</th><th>&nbsp;</th>
+</tr>
+{% for pet in pets %}
+<tr>
+<td>{{ pet.name }}</td>
+<td>{{ pet.kind }}</td>
+<td><a href="{% url action="edit" %}">Edit</a></td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+No pet registered
+{% endif %}
+{% endblock %}
+</body>
+</html>
