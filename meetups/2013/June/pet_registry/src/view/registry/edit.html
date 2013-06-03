@@ -1,1 +1,20 @@
-Edit
+{% extends "registry/browse.html" %}
+{% block body %}
+<h1>Add a new pet</h1>
+<form method="POST" action="{% url action="save" id=pet.id %}">
+<p>
+<label>Name: </label>
+<input type="text" name="Name" value="{{ pet.name }}" />
+</p>
+<p>
+<label>Kind: </label>
+<input type="text" name="Kind" value="{{ pet.kind }}" />
+</p>
+<p>
+<input type="submit" />
+</p>
+</form>
+<form method="GET" action="{% url action="delete" id=pet.id %}">
+<input type="submit" value="Delete" />
+</form>
+{% endblock %}
