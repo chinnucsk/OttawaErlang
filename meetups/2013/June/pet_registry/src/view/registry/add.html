@@ -1,14 +1,29 @@
 {% extends "registry/browse.html" %}
 {% block body %}
 <h1>Add a new pet</h1>
+
+{% if errors %}
+{% for error in errors %}
+<em>{{ error }}</em>
+{% endfor %}
+{% endif %}
+
 <form method="POST" action="{% url action="save" %}">
 <p>
 <label>Name: </label>
+{% if name %}
+<input type="text" name="Name" value="{{ name }}"/>
+{% else %}
 <input type="text" name="Name" />
+{% endif %}
 </p>
 <p>
 <label>Kind: </label>
+{% if kind %}
+<input type="text" name="Kind" value="{{ kind }}" />
+{% else %}
 <input type="text" name="Kind" />
+{% endif %}
 </p>
 <p>
 <input type="submit" />
