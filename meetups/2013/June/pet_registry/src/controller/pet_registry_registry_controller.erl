@@ -5,48 +5,54 @@ browse('GET', []) ->
    Pets = boss_db:find(pet, []),
    {ok, [{pets, Pets}]}.
 
+add('GET', []) ->
+   {ok, []};
+
+%% Save a new pet
+add('POST', []) ->
+   Name = Req:post_param("Name"),
+   Kind = Req:post_param("Kind"),
+   NewPet = pet:new(id, Name, Kind),
+   do_save(NewPet, [{action, "add"}], already_exists(Name)).
+
 edit('GET', [Id]) ->
    Pet = boss_db:find(Id),
-   {ok, [{pet, Pet}]}.
+   {ok, [{pet, Pet}]};
 
-add('GET', []) ->
-   {ok, []}.
-
-save('POST', []) ->
-   Name = Req:post_param("Name"),
-   Kind = Req:post_param("Kind"),
-   case already_exists(Name) of
-      false ->
-         save_new(Name, Kind);
-      true ->
-         Errors = ["Name must not already exist"],
-         {render_other, [{action, "add"}], [{errors, Errors}, {name, Name}, {kind, Kind}]}
-   end;
-
-save('POST', [Id]) ->
+%% Save an existing pet (i.e. edit and update details)
+edit('POST', [Id]) ->
    Name = Req:post_param("Name"),
    Kind = Req:post_param("Kind"),
    Pet = boss_db:find(Id),
+
+   IsDuplicate = case Pet:name() =:= Name of
+      false ->
+         % Name of current pet changed, so check to see if it would create a
+         % duplicate
+         already_exists(Name);
+      true ->
+         % Name didn't change
+         false
+   end,
+
    NewPet = Pet:set([{name, Name}, {kind, Kind}]),
-   {ok, _} = NewPet:save(),
-   {redirect, [{action, "browse"}]}.
+   do_save(NewPet, [{action, "edit"}, {id, Id}], IsDuplicate).
 
 delete('GET', [Id]) ->
    boss_db:delete(Id),
    {redirect, [{action, "browse"}]}.
 
-save_new(Name, Kind) ->
-   NewPet = pet:new(id, Name, Kind),
-   case NewPet:save() of
+do_save(Pet, FailAction, true) ->
+   Errors = ["Name must not already exist"],
+   {render_other, FailAction, [{errors, Errors}, {pet, Pet}]};
+do_save(Pet, FailAction, false) ->
+   case Pet:save() of
       {ok, _} ->
          {redirect, [{action, "browse"}]};
       {error, Errors} ->
-         {render_other, [{action, "add"}], [{errors, Errors}, {name, Name}, {kind, Kind}]}
+         {render_other, FailAction, [{errors, Errors}, {pet, Pet}]}
    end.
-
-% TODO: Don't allow edit to change name to already existing pet
-% TODO: Generalize save_new so that it can also catch errors for edit
-
+         
 already_exists(Name) ->
    case boss_db:find(pet, [name, equals, Name]) of
       [] -> false;
